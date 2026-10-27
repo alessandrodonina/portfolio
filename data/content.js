@@ -124,8 +124,8 @@ window.PORTFOLIO = {
                   "while higher-pitch designs reach maximum efficiency at higher speeds. Propeller selection must therefore match the operating conditions to balance thrust, torque, and efficiency."
                  ]
       "tags": [
-        "Load-cell data",
-        "Propeller performance"
+        "Propeller performance",
+        "Experiemntal Aerodynamics"
       ],
       "detail": "Thrust coefficient, torque coefficient and efficiency versus advance ratio.",
       "cover": "assets/propeller_performance_images/fig-01.png",
