@@ -82,7 +82,7 @@ h1 span {
   font-size: 17px;
   line-height: 1.9;
   color: #6a7b8b;
-  max-width: 600px;
+  max-width: 100%;
 }
 
 .actions {
