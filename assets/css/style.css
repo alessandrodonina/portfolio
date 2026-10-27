@@ -25,10 +25,23 @@ button:focus-visible {
   outline-offset: 4px;
 }
 
+/* Animazione di entrata (fade-in) */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .wrap {
   max-width: 1320px;
   margin: auto;
   padding: 0 60px;
+  animation: fadeIn 0.5s ease-out forwards;
 }
 
 nav {
@@ -40,7 +53,7 @@ nav {
 }
 
 .brand {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 700;
   letter-spacing: -.6px;
 }
@@ -188,7 +201,7 @@ h2 {
   height: 100%;
   object-fit: contain;
   mix-blend-mode: multiply;
-  transition: transform 0.3s ease; /* Zoom fluido per le anteprime progetti */
+  transition: transform 0.3s ease;
 }
 
 .cover:hover img {
@@ -399,7 +412,7 @@ figure {
   padding: 15px;
   border: 1px solid #e2e9ef;
   background: #fff;
-  overflow: hidden; /* Fondamentale per contenere lo zoom dentro la box senza sbavature */
+  overflow: hidden;
 }
 
 figure img {
@@ -407,7 +420,7 @@ figure img {
   max-height: 380px;
   object-fit: contain;
   display: block;
-  transition: transform 0.3s ease; /* Zoom fluido anche per le immagini dei dettagli e gallerie */
+  transition: transform 0.3s ease;
 }
 
 figure:hover img {
@@ -429,7 +442,7 @@ figcaption {
     height: 75px;
   }
   .brand {
-    font-size: 15px;
+    font-size: 20px;
   }
   .links {
     gap: 14px;
@@ -498,34 +511,4 @@ figcaption {
   * {
     transition: none !important;
   }
-}
-/* Animazione di entrata (fade-in) */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(6px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.wrap {
-  animation: fadeIn 0.5s ease-out forwards;
-}
-
-/* Footer centrato con riga orizzontale */
-footer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  border-top: 1px solid #e3e9ef;
-  padding: 40px 0;
-  margin-top: 60px;
-  font-size: 11px;
-  color: #8191a1;
-  text-align: center;
 }
