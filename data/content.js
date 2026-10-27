@@ -31,9 +31,14 @@ window.PORTFOLIO = {
         "Blasius",
         "Nusselt number"
       ],
+      "download": {
+        "label": "Download thesis",
+        "href": "assets/documents/Alessandro-Donina-Bachelors-Thesis.pdf",
+        "filename": "Alessandro-Donina-Bachelors-Thesis.pdf"
+      },
       "aside": {
         "src": "assets/tesi_images/05-risultati/fig-5-4-nusselt.jpg",
-        "caption": "Figure 5.4 — Nusselt number Nu(ζ) for Pr = 0.7, 7 and 50."
+        "caption": "Nusselt number Nu(ζ) for Pr = 0.7, 7 and 50."
       },
       "gallery_title": "Dimensionless temperature Θ by fluid",
       "gallery": [
@@ -64,15 +69,15 @@ window.PORTFOLIO = {
       "gallery": [
         {
           "src": "assets/ducted_propeller_images/fig-01.jpeg",
-          "caption": "Figure 1 — Ducted Propeller Design"
+          "caption": "Duct profile"
         },
         {
           "src": "assets/ducted_propeller_images/fig-02.png",
-          "caption": "Figure 2 — Ducted Propeller Design"
+          "caption": "CFD validation"
         },
         {
           "src": "assets/ducted_propeller_images/fig-03.png",
-          "caption": "Figure 3 — Ducted Propeller Design"
+          "caption": "Thrust"
         }
       ]
     },
@@ -90,11 +95,11 @@ window.PORTFOLIO = {
       "gallery": [
         {
           "src": "assets/euler_fortran_images/fig-01.jpeg",
-          "caption": "Figure 1 — 2D Euler Code in Fortran"
+          "caption": "Test case on LS59 turbine blade"
         },
         {
           "src": "assets/euler_fortran_images/fig-02.png",
-          "caption": "Figure 2 — 2D Euler Code in Fortran"
+          "caption": "Comparison with RANS and experimental data"
         }
       ]
     },
@@ -111,15 +116,15 @@ window.PORTFOLIO = {
       "gallery": [
         {
           "src": "assets/propeller_performance_images/fig-01.png",
-          "caption": "Figure 1 — Propeller Performance Characterization"
+          "caption": "Thrust coefficient vs advance ratio"
         },
         {
           "src": "assets/propeller_performance_images/fig-02.png",
-          "caption": "Figure 2 — Propeller Performance Characterization"
+          "caption": "Torque coefficient vs advance ratio"
         },
         {
           "src": "assets/propeller_performance_images/fig-03.png",
-          "caption": "Figure 3 — Propeller Performance Characterization"
+          "caption": "Efficiency vs advance ratio"
         }
       ]
     },
@@ -136,11 +141,11 @@ window.PORTFOLIO = {
       "gallery": [
         {
           "src": "assets/propeller_tonal_noise_images/fig-01.jpeg",
-          "caption": "Figure 1 — Propeller Tonal Noise Analysis"
+          "caption": "Test case on a NACA 3420 propeller at 6000 RPM with axial velocity of 16 m/s"
         },
         {
           "src": "assets/propeller_tonal_noise_images/fig-02.jpeg",
-          "caption": "Figure 2 — Propeller Tonal Noise Analysis"
+          "caption": "Test case on a NACA 4412 propeller at 6000 RPM with axial velocity of 12 m/s (validated against high-fidelity simulations)"
         }
       ]
     },
@@ -158,7 +163,7 @@ window.PORTFOLIO = {
       "gallery": [
         {
           "src": "assets/trailing_edge_noise_images/fig-01.png",
-          "caption": "Figure 1 — Trailing Edge Noise Analysis"
+          "caption": "Test case on a NACA 0018 comparing experimental data with numerical results across different wall-pressure models"
         }
       ]
     }

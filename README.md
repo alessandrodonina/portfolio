@@ -6,17 +6,11 @@ Sito statico per GitHub Pages.
 
 - `index.html` — home, About me, Projects, CV
 - `projects.html` — indice e dettagli dei progetti
-- `data/content.js` — testi, progetti, immagini e contatti
+- `data/content.js` — testi, progetti, immagini, didascalie e contatti
 - `assets/css/style.css`, `assets/js/site.js` — grafica e funzionamento
-- `assets/documents/` — CV e portfolio PDF
-- Immagini, una cartella per progetto:
-  - `assets/tesi_images/` (con `05-risultati/` e `05-risultati/fluidi/`)
-  - `assets/ducted_propeller_images/`
-  - `assets/euler_fortran_images/`
-  - `assets/propeller_performance_images/`
-  - `assets/propeller_tonal_noise_images/`
-  - `assets/trailing_edge_noise_images/`
+- `assets/documents/` — CV, portfolio e tesi in PDF
+- Immagini, una cartella per progetto: `assets/tesi_images/`, `assets/ducted_propeller_images/`, `assets/euler_fortran_images/`, `assets/propeller_performance_images/`, `assets/propeller_tonal_noise_images/`, `assets/trailing_edge_noise_images/`
 
-Nel file contenuti, `aside` è l'immagine accanto al testo, `gallery` le immagini sotto, `cover` la copertina. Per un nuovo progetto crea una cartella `assets/<nome>_images/` e aggiungi un oggetto in `projects`.
+Nel file contenuti: `aside` è l'immagine accanto al testo, `gallery` le immagini sotto, `cover` la copertina, `download` il pulsante di download di un progetto. Ogni immagine ha `src` e `caption` (solo descrizione, senza numeri di figura).
 
 Pubblicazione: carica il contenuto nella radice del repository, poi Settings > Pages > Deploy from a branch > main > /(root).
