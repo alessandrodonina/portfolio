@@ -1,6 +1,5 @@
 const D = window.PORTFOLIO;
 
-// Helper per fare l'escape dell'HTML ed evitare XSS
 const esc = s => String(s).replace(/[&<>"']/g, c => ({
   '&': '&amp;',
   '<': '&lt;',
@@ -9,10 +8,8 @@ const esc = s => String(s).replace(/[&<>"']/g, c => ({
   "'": '&#39;'
 }[c]));
 
-// Helper per generare i badge dei tag
 const tags = p => (p.tags || []).map(t => `<span>${esc(t)}</span>`).join('');
 
-// Helper per generare i tag <figure> con immagini e caption
 const fig = (im, p) => `
   <figure>
     <img src="${im.src}" alt="${esc(im.caption || p.title)}" loading="lazy">
@@ -20,14 +17,12 @@ const fig = (im, p) => `
   </figure>
 `;
 
-// Helper per generare i link di download (senza freccetta automatica)
 const dl = (p, cls) => p.download ? `
   <a class="${cls}" href="${p.download.href}" download="${esc(p.download.filename || '')}">
     ${esc(p.download.label)}
   </a>
 ` : '';
 
-// Popola i link globali del sito
 document.querySelectorAll('[data-cv]').forEach(a => a.href = D.cv);
 document.querySelectorAll('[data-portfolio]').forEach(a => {
   if (D.portfolio) a.href = D.portfolio;
@@ -38,10 +33,10 @@ document.querySelectorAll('[data-email]').forEach(a => {
 });
 document.querySelectorAll('[data-linkedin]').forEach(a => a.href = D.linkedin);
 
-// Logica per la Home Page
+
+// --- HOME PAGE ---
 if (document.body.dataset.page === 'home') {
   document.querySelector('#intro').textContent = D.intro;
-  document.querySelector('#about-text').innerHTML = D.about.map(p => `<p>${esc(p)}</p>`).join('');
   document.querySelector('#project-count').textContent = String(D.projects.length).padStart(2, '0') + ' PROJECTS';
   
   document.querySelector('#projects').innerHTML = D.projects.map((p, i) => `
@@ -63,7 +58,12 @@ if (document.body.dataset.page === 'home') {
     </article>
   `).join('');
 } 
-// Logica per la pagina Projects
+// --- ABOUT PAGE ---
+else if (document.body.dataset.page === 'about') {
+  // Ora carica tutto il papiro solo qui
+  document.querySelector('#about-text').innerHTML = D.about.map(p => `<p>${esc(p)}</p>`).join('');
+} 
+// --- PROJECTS PAGE ---
 else {
   document.querySelector('#index').innerHTML = D.projects.map((p, i) => `
     <li>
@@ -94,7 +94,6 @@ else {
     </section>
   `).join('');
 
-  // Scroll automatico all'ancora se presente nell'URL
   if (location.hash) {
     requestAnimationFrame(() => {
       document.getElementById(location.hash.slice(1))?.scrollIntoView();
