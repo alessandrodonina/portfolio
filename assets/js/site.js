@@ -18,7 +18,7 @@ const fig = (im, p) => `
 `;
 
 const dl = (p, cls) => p.download ? `
-  <a class="${cls}" href="${p.download.href}" download="${esc(p.download.filename || '')}">
+  <a class="${cls}" href="${p.download.href}" target="_blank" rel="noopener noreferrer">
     ${esc(p.download.label)}
   </a>
 ` : '';
@@ -29,12 +29,11 @@ document.querySelectorAll('[data-portfolio]').forEach(a => {
 });
 document.querySelectorAll('[data-email]').forEach(a => {
   a.href = 'mailto:' + D.email;
-  a.textContent = D.email + ' ↗';
+  a.textContent = D.email; 
 });
 document.querySelectorAll('[data-linkedin]').forEach(a => a.href = D.linkedin);
 
 
-// --- HOME PAGE ---
 if (document.body.dataset.page === 'home') {
   document.querySelector('#intro').textContent = D.intro;
   document.querySelector('#project-count').textContent = String(D.projects.length).padStart(2, '0') + ' PROJECTS';
@@ -52,18 +51,15 @@ if (document.body.dataset.page === 'home') {
       <p>${esc(p.description)}</p>
       <div class="tags">${tags(p)}</div>
       <div class="card-links">
-        <a class="textlink" href="projects.html#project-${i + 1}">Read details ↗</a>
+        <a class="textlink" href="projects.html#project-${i + 1}">Read details</a>
         ${dl(p, 'textlink')}
       </div>
     </article>
   `).join('');
 } 
-// --- ABOUT PAGE ---
 else if (document.body.dataset.page === 'about') {
-  // Ora carica tutto il papiro solo qui
   document.querySelector('#about-text').innerHTML = D.about.map(p => `<p>${esc(p)}</p>`).join('');
 } 
-// --- PROJECTS PAGE ---
 else {
   document.querySelector('#index').innerHTML = D.projects.map((p, i) => `
     <li>
