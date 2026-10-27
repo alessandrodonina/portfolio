@@ -188,7 +188,7 @@ h2 {
   height: 100%;
   object-fit: contain;
   mix-blend-mode: multiply;
-  transition: transform .3s;
+  transition: transform 0.3s ease; /* Zoom fluido per le anteprime progetti */
 }
 
 .cover:hover img {
@@ -302,7 +302,6 @@ footer {
   font-size: 60px;
 }
 
-/* --- CORRETTO: Stile per la lista dei progetti --- */
 .index {
   list-style: none;
   margin: 0 0 20px;
@@ -333,7 +332,6 @@ footer {
   text-transform: uppercase;
   color: #68839d;
 }
-/* ----------------------------------------------- */
 
 .detail {
   padding: 65px 0;
@@ -401,6 +399,7 @@ figure {
   padding: 15px;
   border: 1px solid #e2e9ef;
   background: #fff;
+  overflow: hidden; /* Fondamentale per contenere lo zoom dentro la box senza sbavature */
 }
 
 figure img {
@@ -408,6 +407,11 @@ figure img {
   max-height: 380px;
   object-fit: contain;
   display: block;
+  transition: transform 0.3s ease; /* Zoom fluido anche per le immagini dei dettagli e gallerie */
+}
+
+figure:hover img {
+  transform: scale(1.035);
 }
 
 figcaption {
