@@ -19,17 +19,17 @@ window.PORTFOLIO = {
       "category": "Bachelor’s thesis",
       "description": "Numerical study of the laminar thermal boundary layer over a partially heated flat plate, solved with a self-similar formulation and finite elements.",
       "summary": [
-        "Bachelor’s thesis in Aerospace Engineering at Politecnico di Torino (2024/2025), supervised by Prof. Michele Iovieno. It studies convective heat transfer in the thermal boundary layer over a finite flat plate, heated over part of its surface.",
+        "Bachelor’s thesis in Aerospace Engineering at Politecnico di Torino, supervised by Prof. Michele Iovieno. The aim of the thesis was to study convective heat transfer in the thermal boundary layer over a finite flat plate, heated over part of its surface.",
         "Starting from the energy equation, and assuming incompressible flow with constant properties, the problem is reduced to a self-similar equation in the variables η and ζ. The velocity field comes from the Blasius solution.",
-        "The Blasius equation is solved in MATLAB with a shooting method, using Newton iteration and ode45. The self-similar temperature equation is then solved with linear finite elements.",
-        "The Nusselt number increases with the Prandtl number, so heat transfer is more efficient in fluids with higher Pr. Where the plate is not heated (ζ < 0), Nu is zero. The Pr = 50 case shows oscillations because its thermal layer is thin and needs a finer grid."
+        "The Blasius equation is solved in MATLAB with a shooting method, using the Newton method and fourth- and fifth-order Runge-Kutta methods. The self-similar temperature equation is then solved with linear finite elements using a custom-made code.",
+        "The results show how the Nusselt number increases with the Prandtl number, so heat transfer is more efficient in fluids with higher Pr, as the thermal boundary layer becomes thinner."
       ],
-      "cover": "assets/tesi_images/05-risultati/fig-5-4-nusselt.jpg",
+      "cover": "assets/tesi_images/05-risultati/fluidi/acqua-pr-7.jpg",
       "tags": [
+        "Bachelor’s Thesis",
+        "Thermal-Fluid Dynamics",
         "MATLAB",
-        "Finite elements",
-        "Blasius",
-        "Nusselt number"
+        "Finite Elements"
       ],
       "download": {
         "label": "Download thesis",
@@ -60,20 +60,25 @@ window.PORTFOLIO = {
       "title": "Ducted Propeller Design",
       "category": "Propulsion / CFD",
       "description": "Custom Bayesian optimizer for designing ducted propellers, validated through CFD. It generated up to 700 N of thrust with a 0.72 meter diameter duct.",
-      "tags": [
-        "Bayesian optimization",
-        "CFD"
+      "summary": [
+        "The ducted propeller was part of RED Ferraris, an eVTOL designed by the ZEFIRO Student Team for the 2025 VFS Competition. For the project, the team won the “Best New Entrant” Prize.",
+        "The duct helped the propeller to generate an additional thrust of 700 N with a diameter of 0.72 meters: 16 motors, distributed along the front and rear wings, created a DEP (Distributed Electric Propulsion) system able to lift a 2.2-ton hydrogen eVTOL."
       ],
-      "detail": "The system generated up to 700 N of thrust with a 0.72 meter diameter duct.",
+      "tags": [
+        "Aerodynamic Optimization",
+        "Bayesian Optimization",
+        "CFD",
+        "eVTOL"
+      ],
       "cover": "assets/ducted_propeller_images/fig-02.png",
+      "aside": {
+        "src": "assets/ducted_propeller_images/fig-02.png",
+        "caption": "CFD validation of the design."
+      },
       "gallery": [
         {
           "src": "assets/ducted_propeller_images/fig-01.jpeg",
           "caption": "Duct profile"
-        },
-        {
-          "src": "assets/ducted_propeller_images/fig-02.png",
-          "caption": "CFD validation"
         },
         {
           "src": "assets/ducted_propeller_images/fig-03.png",
@@ -83,20 +88,24 @@ window.PORTFOLIO = {
     },
     {
       "title": "2D Euler Code in Fortran",
-      "category": "Computational fluid dynamics",
-      "description": "Fluid dynamics code developed for the Computational Fluid Dynamics of Propulsive Systems course, using Roe and Lax–Friedrichs methods.",
+      "category": "Computational Fluid Dynamics",
+      "description": "Fluid dynamics code developed for the Computational Fluid Dynamics of Propulsive Systems course.",
+      "summary": [
+        "The objective of the course was to understand the math behind CFD solvers and to develop a 2D Euler code using Roe and Lax–Friedrichs methods.",
+        "The code was developed in Fortran and could be run on any machine. The results were validated against RANS results and experimental results.",
+        "One of the main differences between the results obtained from the code and the RANS/experimental ones was related to the absence of viscosity in the Euler equations."
+      ],
       "tags": [
         "Fortran",
-        "Roe",
-        "Lax–Friedrichs"
+        "CFD",
+        "ANSYS"
       ],
-      "detail": "LS59 turbine blade test case, with comparison against RANS and experimental data.",
       "cover": "assets/euler_fortran_images/fig-01.jpeg",
+      "aside": {
+        "src": "assets/euler_fortran_images/fig-01.jpeg",
+        "caption": "LS59 Mach contour with shock waves."
+      },
       "gallery": [
-        {
-          "src": "assets/euler_fortran_images/fig-01.jpeg",
-          "caption": "Test case on LS59 turbine blade"
-        },
         {
           "src": "assets/euler_fortran_images/fig-02.png",
           "caption": "Comparison with RANS and experimental data"
@@ -107,6 +116,13 @@ window.PORTFOLIO = {
       "title": "Propeller Performance Characterization",
       "category": "Experimental analysis",
       "description": "Custom code to compute relevant quantities to characterize propellers from raw load-cell data as the advance ratio changes.",
+      "summary": [ "The code aimed to charachterize propeller's performances by data obtained from a load-cell giving forces and torque on the three spatial axes.",
+                  "The data were obtained doing experimental analysis in a wind tunnel and then computed into torque and thrust coefficients, and efficiency.",
+                  "Changing the wind tunnel air velocity, it has been possible to evaluate performance at different advance ratios, showing that higher-pitch propellers with more blades produce greater thrust, torque, and drag, while reducing blade count or pitch lowers these values.",
+                  "All designs transition to windmilling at negative local angle of attack, with lower-pitch variants reaching this condition earlier due to their smaller blade angle.",
+                  "Efficiency peaks at a similar range for every configuration, but the location of the peak shifts: low-pitch propellers optimize at lower advance ratios,"
+                  "while higher-pitch designs reach maximum efficiency at higher speeds. Propeller selection must therefore match the operating conditions to balance thrust, torque, and efficiency."
+                 ]
       "tags": [
         "Load-cell data",
         "Propeller performance"
@@ -132,11 +148,15 @@ window.PORTFOLIO = {
       "title": "Propeller Tonal Noise Analysis",
       "category": "Aeroacoustics",
       "description": "Custom code to compute propeller tonal noise through far-field spectra and directivity, in steady and unsteady conditions.",
+       "summary": [
+        "The code aim to charatcherize propeller's acoustics by knowing the loads on the propeller (thrust coefficient and torque coefficient) computed using BEMT.",
+        "In the code, developed in MATLAB, the observer could be positioned at any distance and angle from the source, considered as a point in space.",
+        "The noise was computed using Farassat Theory and Ffowcs Williams-Hawkings equation. The results was then compared to high-fidelity results from a CFD solver."]
       "tags": [
-        "Tonal noise",
-        "Directivity"
+        "Aeroacoustics",
+        "MATLAB",
+        "BEMT",
       ],
-      "detail": "NACA 3420 propeller at 6000 RPM and 16 m/s; NACA 4412 propeller at 6000 RPM and 12 m/s, validated against high-fidelity simulations.",
       "cover": "assets/propeller_tonal_noise_images/fig-01.jpeg",
       "gallery": [
         {
