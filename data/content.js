@@ -66,7 +66,8 @@ window.PORTFOLIO = {
         "Aerodynamic Optimization",
         "Bayesian Optimization",
         "eVTOL",
-        "CFD"
+        "CFD",
+        "Python"
       ],
       "cover": "assets/ducted_propeller_images/fig-02.png",
       "aside": {
@@ -122,7 +123,8 @@ window.PORTFOLIO = {
       ],
       "tags": [
         "Experimental Aerodynamics",
-        "Propeller Performance"
+        "Propeller Performance",
+        "MATLAB"
       ],
       "detail": "Thrust coefficient, torque coefficient and efficiency versus advance ratio.",
       "cover": "assets/propeller_performance_images/fig-01.png",
