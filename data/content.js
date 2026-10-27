@@ -30,9 +30,8 @@ window.PORTFOLIO = {
         "MATLAB"
       ],
       "download": {
-        "label": "Download thesis",
-        "href": "assets/documents/Alessandro-Donina-Bachelors-Thesis.pdf",
-        "filename": "Alessandro-Donina-Bachelors-Thesis.pdf"
+        "label": "View thesis",
+        "href": "assets/documents/Alessandro-Donina-Bachelors-Thesis.pdf"
       },
       "aside": {
         "src": "assets/tesi_images/05-risultati/fig-5-4-nusselt.jpg",
@@ -56,7 +55,7 @@ window.PORTFOLIO = {
     },
     {
       "title": "Ducted Propeller Design",
-      "category": "Design/Optimization",
+      "category": "Propulsion / CFD",
       "description": "Custom Bayesian optimizer for designing ducted propellers, validated through CFD. It generated up to 700 N of thrust with a 0.72 meter diameter duct.",
       "summary": [
         "The ducted propeller was part of RED Ferraris, an eVTOL designed by the ZEFIRO Student Team for the 2025 VFS Competition. For this project, the team won the “Best New Entrant” Prize.",
@@ -66,8 +65,7 @@ window.PORTFOLIO = {
         "Aerodynamic Optimization",
         "Bayesian Optimization",
         "eVTOL",
-        "CFD",
-        "Python"
+        "CFD"
       ],
       "cover": "assets/ducted_propeller_images/fig-02.png",
       "aside": {
@@ -123,8 +121,7 @@ window.PORTFOLIO = {
       ],
       "tags": [
         "Experimental Aerodynamics",
-        "Propeller Performance",
-        "MATLAB"
+        "Propeller Performance"
       ],
       "detail": "Thrust coefficient, torque coefficient and efficiency versus advance ratio.",
       "cover": "assets/propeller_performance_images/fig-01.png",
@@ -165,7 +162,7 @@ window.PORTFOLIO = {
         },
         {
           "src": "assets/propeller_tonal_noise_images/fig-02.jpeg",
-          "caption": "Validation on a NACA 4412 propeller at 6000 RPM with axial velocity of 12 m/s"
+          "caption": "Test case on a NACA 4412 propeller at 6000 RPM with axial velocity of 12 m/s (validated against high-fidelity simulations)"
         }
       ]
     },
