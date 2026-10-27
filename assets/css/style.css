@@ -499,3 +499,33 @@ figcaption {
     transition: none !important;
   }
 }
+/* Animazione di entrata (fade-in) */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wrap {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+/* Footer centrato con riga orizzontale */
+footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  border-top: 1px solid #e3e9ef;
+  padding: 40px 0;
+  margin-top: 60px;
+  font-size: 11px;
+  color: #8191a1;
+  text-align: center;
+}
