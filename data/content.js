@@ -56,7 +56,7 @@ window.PORTFOLIO = {
     },
     {
       "title": "Ducted Propeller Design",
-      "category": "Propulsion / CFD",
+      "category": "Design/Optimization",
       "description": "Custom Bayesian optimizer for designing ducted propellers, validated through CFD. It generated up to 700 N of thrust with a 0.72 meter diameter duct.",
       "summary": [
         "The ducted propeller was part of RED Ferraris, an eVTOL designed by the ZEFIRO Student Team for the 2025 VFS Competition. For this project, the team won the “Best New Entrant” Prize.",
