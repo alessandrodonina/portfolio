@@ -165,7 +165,7 @@ window.PORTFOLIO = {
         },
         {
           "src": "assets/propeller_tonal_noise_images/fig-02.jpeg",
-          "caption": "Test case on a NACA 4412 propeller at 6000 RPM with axial velocity of 12 m/s (validated against high-fidelity simulations)"
+          "caption": "Validation on a NACA 4412 propeller at 6000 RPM with axial velocity of 12 m/s"
         }
       ]
     },
