@@ -150,6 +150,19 @@ h1 span {
   align-items: start;
 }
 
+/* Colonna foto + CV nella pagina About */
+.profile-col {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 16px;
+}
+
+.profile-col .button {
+  text-align: center;
+  margin-top: 4px;
+}
+
 .profile-pic {
   width: 100%;
   border-radius: 6px;
@@ -281,7 +294,7 @@ h3 {
   z-index: 2;
 }
 
-/* Stile per il bottone secondario minimal (sia in home che nella pagina projects) */
+/* Stile per il bottone secondario minimal */
 .btn-link {
   display: inline-block;
   padding: 8px 14px;
