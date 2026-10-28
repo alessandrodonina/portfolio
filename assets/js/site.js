@@ -1,98 +1,103 @@
-const D = window.PORTFOLIO;
+document.addEventListener('DOMContentLoaded', () => {
+  const page = document.body.dataset.page;
 
-const esc = s => String(s).replace(/[&<>"']/g, c => ({
-  '&': '&amp;',
-  '<': '&lt;',
-  '>': '&gt;',
-  '"': '&quot;',
-  "'": '&#39;'
-}[c]));
+  if (typeof portfolioData === 'undefined') return;
 
-const tags = p => (p.tags || []).map(t => `<span>${esc(t)}</span>`).join('');
+  // Link dinamici (CV, Email, LinkedIn)
+  document.querySelectorAll('[data-cv]').forEach(el => {
+    el.href = portfolioData.cvUrl || '#';
+  });
 
-const fig = (im, p) => `
-  <figure>
-    <img src="${im.src}" alt="${esc(im.caption || p.title)}" loading="lazy">
-    <figcaption>${esc(im.caption || '')}</figcaption>
-  </figure>
-`;
+  document.querySelectorAll('[data-email]').forEach(el => {
+    el.href = `mailto:${portfolioData.email}`;
+    el.textContent = portfolioData.email;
+  });
 
-const dl = (p, cls) => p.download ? `
-  <a class="${cls}" href="${p.download.href}" target="_blank" rel="noopener noreferrer">
-    ${esc(p.download.label)}
-  </a>
-` : '';
+  document.querySelectorAll('[data-linkedin]').forEach(el => {
+    el.href = portfolioData.linkedinUrl || '#';
+  });
 
-document.querySelectorAll('[data-cv]').forEach(a => a.href = D.cv);
-document.querySelectorAll('[data-portfolio]').forEach(a => {
-  if (D.portfolio) a.href = D.portfolio;
-});
-document.querySelectorAll('[data-email]').forEach(a => {
-  a.href = 'mailto:' + D.email;
-  a.textContent = D.email; 
-});
-document.querySelectorAll('[data-linkedin]').forEach(a => a.href = D.linkedin);
+  // Logica Home Page
+  if (page === 'home') {
+    const introEl = document.getElementById('intro');
+    if (introEl) introEl.textContent = portfolioData.intro;
 
+    const countEl = document.getElementById('project-count');
+    if (countEl) countEl.textContent = `${portfolioData.projects.length} projects`;
 
-if (document.body.dataset.page === 'home') {
-  document.querySelector('#intro').textContent = D.intro;
-  document.querySelector('#project-count').textContent = String(D.projects.length).padStart(2, '0') + ' PROJECTS';
-  
-  document.querySelector('#projects').innerHTML = D.projects.map((p, i) => `
-    <article class="card">
-      <a class="cover" href="projects.html#project-${i + 1}" aria-label="Read ${esc(p.title)}">
-        <img src="${p.cover}" alt="${esc(p.title)} — figure" loading="lazy">
-      </a>
-      <div class="meta">
-        <span>${esc(p.category)}</span>
-        <span>${String(i + 1).padStart(2, '0')}</span>
-      </div>
-      <h3>${esc(p.title)}</h3>
-      <p>${esc(p.description)}</p>
-      <div class="tags">${tags(p)}</div>
-      <div class="card-links">
-        <a class="textlink" href="projects.html#project-${i + 1}">Read details</a>
-        ${dl(p, 'textlink')}
-      </div>
-    </article>
-  `).join('');
-} 
-else if (document.body.dataset.page === 'about') {
-  document.querySelector('#about-text').innerHTML = D.about.map(p => `<p>${esc(p)}</p>`).join('');
-} 
-else {
-  document.querySelector('#index').innerHTML = D.projects.map((p, i) => `
-    <li>
-      <a href="#project-${i + 1}">
-        <span class="eyebrow">${String(i + 1).padStart(2, '0')}</span>
-        <span>${esc(p.title)}</span>
-        <small>${esc(p.category)}</small>
-      </a>
-    </li>
-  `).join('');
-
-  document.querySelector('#details').innerHTML = D.projects.map((p, i) => `
-    <section class="detail" id="project-${i + 1}">
-      <div class="detail-top${p.aside ? ' has-aside' : ''}">
-        <div>
-          <p class="eyebrow">${String(i + 1).padStart(2, '0')} / ${esc(p.category)}</p>
-          <h2>${esc(p.title)}</h2>
-          <p>${esc(p.description)}</p>
-          ${p.summary ? `<p class="eyebrow summary-label">Summary</p>${p.summary.map(s => `<p>${esc(s)}</p>`).join('')}` : ''}
-          ${p.detail ? `<p>${esc(p.detail)}</p>` : ''}
-          ${p.tags ? `<div class="tags">${tags(p)}</div>` : ''}
-          ${dl(p, 'button')}
+    const projectsGrid = document.getElementById('projects');
+    if (projectsGrid) {
+      projectsGrid.innerHTML = portfolioData.projects.map(p => `
+        <div class="card">
+          <a href="projects.html#${p.id}" class="cover">
+            <img src="${p.image}" alt="${p.title}">
+          </a>
+          <div class="meta">
+            <span>${p.category}</span>
+            <span>${p.year}</span>
+          </div>
+          <h3><a href="projects.html#${p.id}">${p.title}</a></h3>
+          <p>${p.summary || p.description}</p>
+          <div class="tags">
+            ${p.tags.map(t => `<span>${t}</span>`).join('')}
+          </div>
         </div>
-        ${p.aside ? fig(p.aside, p) : ''}
-      </div>
-      ${p.gallery_title ? `<h3 class="gallery-title">${esc(p.gallery_title)}</h3>` : ''}
-      ${p.gallery ? `<div class="gallery">${p.gallery.map(im => fig(im, p)).join('')}</div>` : ''}
-    </section>
-  `).join('');
-
-  if (location.hash) {
-    requestAnimationFrame(() => {
-      document.getElementById(location.hash.slice(1))?.scrollIntoView();
-    });
+      `).join('');
+    }
   }
-}
+
+  // Logica Pagina About
+  if (page === 'about') {
+    const aboutTextContainer = document.getElementById('about-text');
+    if (aboutTextContainer && portfolioData.aboutText) {
+      aboutTextContainer.innerHTML = portfolioData.aboutText;
+    }
+  }
+
+  // Logica Pagina Projects
+  if (page === 'projects') {
+    const indexList = document.getElementById('index');
+    const detailsContainer = document.getElementById('details');
+
+    if (indexList) {
+      indexList.innerHTML = portfolioData.projects.map((p, index) => `
+        <li>
+          <a href="#${p.id}">
+            <small>0${index + 1}</small>
+            <span>${p.title}</span>
+            <small>${p.category}</small>
+          </a>
+        </li>
+      `).join('');
+    }
+
+    if (detailsContainer) {
+      detailsContainer.innerHTML = portfolioData.projects.map((p, index) => `
+        <article class="detail" id="${p.id}">
+          <div class="detail-top ${p.aside ? 'has-aside' : ''}">
+            <div>
+              <div class="eyebrow">0${index + 1} / ${p.category}</div>
+              <h2>${p.title}</h2>
+              <p>${p.description}</p>
+              ${p.link ? `<a class="button" href="${p.link.url}" target="_blank" rel="noopener noreferrer">${p.link.label}</a>` : ''}
+              <div class="tags">
+                ${p.tags.map(t => `<span>${t}</span>`).join('')}
+              </div>
+            </div>
+            ${p.aside ? `<div><p>${p.aside}</p></div>` : ''}
+          </div>
+          ${p.gallery && p.gallery.length ? `
+            <div class="gallery">
+              ${p.gallery.map(img => `
+                <figure>
+                  <img src="${img.src}" alt="${img.caption || p.title}">
+                  ${img.caption ? `<figcaption>${img.caption}</figcaption>` : ''}
+                </figure>
+              `).join('')}
+            </div>
+          ` : ''}
+        </article>
+      `).join('');
+    }
+  }
+});
