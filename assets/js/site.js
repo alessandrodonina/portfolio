@@ -18,7 +18,7 @@ const fig = (im, p) => `
 `;
 
 const dl = (p, cls) => p.download ? `
-  <a class="${cls}" href="${p.download.href}" target="_blank" rel="noopener noreferrer">
+  <a class="${cls}" href="${p.download.href}" target="_blank" rel="noopener noreferrer" onclick="event.stopPropagation();">
     ${esc(p.download.label)}
   </a>
 ` : '';
@@ -39,21 +39,22 @@ if (document.body.dataset.page === 'home') {
   document.querySelector('#project-count').textContent = String(D.projects.length).padStart(2, '0') + ' PROJECTS';
   
   document.querySelector('#projects').innerHTML = D.projects.map((p, i) => `
-    <article class="card">
-      <a class="cover" href="projects.html#project-${i + 1}" aria-label="Read ${esc(p.title)}">
+    <article class="card" onclick="window.location.href='projects.html#project-${i + 1}'" style="cursor: pointer;">
+      <div class="cover">
         <img src="${p.cover}" alt="${esc(p.title)} — figure" loading="lazy">
-      </a>
+      </div>
       <div class="meta">
         <span>${esc(p.category)}</span>
         <span>${String(i + 1).padStart(2, '0')}</span>
       </div>
-      <h3><a href="projects.html#project-${i + 1}">${esc(p.title)}</a></h3>
+      <h3>${esc(p.title)}</h3>
       <p>${esc(p.description)}</p>
       <div class="tags">${tags(p)}</div>
-      <div class="card-links">
-        <a class="textlink" href="projects.html#project-${i + 1}">Read details</a>
-        ${dl(p, 'textlink')}
-      </div>
+      ${p.download ? `
+        <div class="card-links">
+          ${dl(p, 'textlink')}
+        </div>
+      ` : ''}
     </article>
   `).join('');
 } 
