@@ -52,7 +52,7 @@ if (document.body.dataset.page === 'home') {
       <div class="tags">${tags(p)}</div>
       ${p.download ? `
         <div class="card-links">
-          ${dl(p, 'textlink')}
+          ${dl(p, 'btn-link')}
         </div>
       ` : ''}
     </article>
