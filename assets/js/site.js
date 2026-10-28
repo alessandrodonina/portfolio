@@ -71,24 +71,30 @@ else {
     </li>
   `).join('');
 
-  document.querySelector('#details').innerHTML = D.projects.map((p, i) => `
-    <section class="detail" id="project-${i + 1}">
-      <div class="detail-top${p.aside ? ' has-aside' : ''}">
-        <div>
-          <p class="eyebrow">${String(i + 1).padStart(2, '0')} / ${esc(p.category)}</p>
-          <h2>${esc(p.title)}</h2>
-          <p>${esc(p.description)}</p>
-          ${p.summary ? `<p class="eyebrow summary-label">Summary</p>${p.summary.map(s => `<p>${esc(s)}</p>`).join('')}` : ''}
-          ${p.detail ? `<p>${esc(p.detail)}</p>` : ''}
-          ${p.tags ? `<div class="tags">${tags(p)}</div>` : ''}
-          ${dl(p, 'button')}
+  document.querySelector('#details').innerHTML = D.projects.map((p, i) => {
+    const asideContent = p.aside 
+      ? `<div class="aside-col">${Array.isArray(p.aside) ? p.aside.map(im => fig(im, p)).join('') : fig(p.aside, p)}</div>` 
+      : '';
+
+    return `
+      <section class="detail" id="project-${i + 1}">
+        <div class="detail-top${p.aside ? ' has-aside' : ''}">
+          <div>
+            <p class="eyebrow">${String(i + 1).padStart(2, '0')} / ${esc(p.category)}</p>
+            <h2>${esc(p.title)}</h2>
+            <p>${esc(p.description)}</p>
+            ${p.summary ? `<p class="eyebrow summary-label">Summary</p>${p.summary.map(s => `<p>${esc(s)}</p>`).join('')}` : ''}
+            ${p.detail ? `<p>${esc(p.detail)}</p>` : ''}
+            ${p.tags ? `<div class="tags">${tags(p)}</div>` : ''}
+            ${dl(p, 'button')}
+          </div>
+          ${asideContent}
         </div>
-        ${p.aside ? fig(p.aside, p) : ''}
-      </div>
-      ${p.gallery_title ? `<h3 class="gallery-title">${esc(p.gallery_title)}</h3>` : ''}
-      ${p.gallery ? `<div class="gallery">${p.gallery.map(im => fig(im, p)).join('')}</div>` : ''}
-    </section>
-  `).join('');
+        ${p.gallery_title ? `<h3 class="gallery-title">${esc(p.gallery_title)}</h3>` : ''}
+        ${p.gallery ? `<div class="gallery">${p.gallery.map(im => fig(im, p)).join('')}</div>` : ''}
+      </section>
+    `;
+  }).join('');
 
   if (location.hash) {
     requestAnimationFrame(() => {
