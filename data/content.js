@@ -136,9 +136,9 @@ window.PORTFOLIO = {
       "detail": "Thrust coefficient, torque coefficient and efficiency versus advance ratio.",
       "cover": "assets/propeller_performance_images/fig-01.png",
       "aside": {
-          "src": "assets/propeller_performance_images/fig-03.png",
-          "caption": "Efficiency vs advance ratio"
-        }
+        "src": "assets/propeller_performance_images/fig-03.png",
+        "caption": "Efficiency vs advance ratio"
+      },
       "gallery": [
         {
           "src": "assets/propeller_performance_images/fig-01.png",
@@ -170,7 +170,7 @@ window.PORTFOLIO = {
           "src": "assets/propeller_tonal_noise_images/fig-03.jpeg",
           "caption": "Acoustic directivity and SPL radiation patterns at 1 m"
         }
-      ]
+      ],
       "gallery": [
         {
           "src": "assets/propeller_tonal_noise_images/fig-01.jpeg",
@@ -202,10 +202,10 @@ window.PORTFOLIO = {
           "src": "assets/trailing_edge_noise_images/fig-01.png",
           "caption": "Test case on a NACA 0018 comparing experimental data with numerical results across different wall-pressure models"
         }
-      ]
+      ],
       "gallery": [
         {
-         "src": "assets/trailing_edge_noise_images/fig-02.png",
+          "src": "assets/trailing_edge_noise_images/fig-02.png",
           "caption": "Aeroacoustic ATF directivity polar plots and validation"
         }
       ]
