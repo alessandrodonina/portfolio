@@ -186,6 +186,20 @@ h2 {
   margin: 10px 0 65px;
 }
 
+/* Box per i progetti */
+.card {
+  border: 1px solid #e3e9ef;
+  border-radius: 8px;
+  padding: 25px;
+  background: #ffffff;
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: 0 10px 25px rgba(6, 37, 67, 0.06);
+  border-color: #ccd9e6;
+}
+
 .cover {
   display: block;
   height: 290px;
