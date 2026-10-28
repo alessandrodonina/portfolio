@@ -167,7 +167,7 @@ window.PORTFOLIO = {
       "cover": "assets/propeller_tonal_noise_images/fig-01.jpeg",
       "aside": [
         {
-          "src": "assets/propeller_tonal_noise_images/fig-03.jpeg",
+          "src": "assets/propeller_tonal_noise_images/fig-03.png",
           "caption": "Acoustic directivity and SPL radiation patterns at 1 m"
         }
       ],
