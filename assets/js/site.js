@@ -47,7 +47,7 @@ if (document.body.dataset.page === 'home') {
         <span>${esc(p.category)}</span>
         <span>${String(i + 1).padStart(2, '0')}</span>
       </div>
-      <h3>${esc(p.title)}</h3>
+      <h3><a href="projects.html#project-${i + 1}">${esc(p.title)}</a></h3>
       <p>${esc(p.description)}</p>
       <div class="tags">${tags(p)}</div>
       <div class="card-links">
