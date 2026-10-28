@@ -1,4 +1,4 @@
-* {
+- {
   box-sizing: border-box;
 }
 
@@ -186,18 +186,24 @@ h2 {
   margin: 10px 0 65px;
 }
 
-/* Box per i progetti */
+/* Box per i progetti (card cliccabile) */
 .card {
   border: 1px solid #e3e9ef;
   border-radius: 8px;
   padding: 25px;
   background: #ffffff;
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
 .card:hover {
-  box-shadow: 0 10px 25px rgba(6, 37, 67, 0.06);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(6, 37, 67, 0.08);
   border-color: #ccd9e6;
+}
+
+.card:hover .cover img {
+  transform: scale(1.035);
 }
 
 .cover {
@@ -216,10 +222,6 @@ h2 {
   object-fit: contain;
   mix-blend-mode: multiply;
   transition: transform 0.3s ease;
-}
-
-.cover:hover img {
-  transform: scale(1.035);
 }
 
 .meta {
@@ -264,11 +266,13 @@ h3 {
   display: flex;
   gap: 22px;
   flex-wrap: wrap;
+  margin-top: 18px;
+  position: relative;
+  z-index: 2;
 }
 
 .textlink {
   display: inline-block;
-  margin-top: 18px;
   font-size: 12px;
   color: #2664a1;
 }
