@@ -23,7 +23,7 @@ window.PORTFOLIO = {
         "The Blasius equation is solved in MATLAB with a shooting method, using the Newton method and fourth- and fifth-order Runge-Kutta methods. The self-similar temperature equation is then solved with linear finite elements using a custom code.",
         "The results show how the Nusselt number increases with the Prandtl number, meaning heat transfer is more efficient in fluids with a higher Pr, as the thermal boundary layer becomes thinner."
       ],
-      "cover": "assets/tesi_images/05-risultati/fluidi/acqua-pr-7.jpg",
+      "cover": "assets/tesi_images/acqua-pr-7.jpg",
       "tags": [
         "Thermal-Fluid Dynamics",
         "Finite Elements",
@@ -34,21 +34,21 @@ window.PORTFOLIO = {
         "href": "assets/documents/Alessandro-Donina-Bachelors-Thesis.pdf"
       },
       "aside": {
-        "src": "assets/tesi_images/05-risultati/fig-5-4-nusselt.jpg",
+        "src": "assets/tesi_images/nusselt.jpg",
         "caption": "Nusselt number Nu(ζ) for Pr = 0.7, 7 and 50."
       },
       "gallery_title": "Dimensionless temperature Θ by fluid",
       "gallery": [
         {
-          "src": "assets/tesi_images/05-risultati/fluidi/aria-pr-0-7.jpg",
+          "src": "assets/tesi_images/aria-pr-0-7.jpg",
           "caption": "Air — Pr = 0.7"
         },
         {
-          "src": "assets/tesi_images/05-risultati/fluidi/acqua-pr-7.jpg",
+          "src": "assets/tesi_images/acqua-pr-7.jpg",
           "caption": "Water — Pr = 7"
         },
         {
-          "src": "assets/tesi_images/05-risultati/fluidi/olio-pr-50.jpg",
+          "src": "assets/tesi_images/olio-pr-50.jpg",
           "caption": "Oil — Pr = 50"
         }
       ]
