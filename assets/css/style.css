@@ -526,3 +526,9 @@ figcaption {
     transition: none !important;
   }
 }
+
+.aside-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
