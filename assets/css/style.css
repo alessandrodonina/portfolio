@@ -276,7 +276,7 @@ h3 {
   display: flex;
   gap: 22px;
   flex-wrap: wrap;
-  margin-top: 18px;
+  margin-top: 24px;
   position: relative;
   z-index: 2;
 }
@@ -293,7 +293,7 @@ h3 {
   border: 1px solid #d2e1f0;
   border-radius: 4px;
   transition: all 0.25s ease;
-  margin-top: 15px;
+  margin-top: 24px;
 }
 
 .btn-link:hover {
@@ -449,7 +449,8 @@ footer {
 }
 
 .detail .tags {
-  margin-top: 20px;
+  margin-top: 24px;
+  margin-bottom: 24px;
 }
 
 figure {
