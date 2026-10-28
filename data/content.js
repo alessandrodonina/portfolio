@@ -135,6 +135,10 @@ window.PORTFOLIO = {
       ],
       "detail": "Thrust coefficient, torque coefficient and efficiency versus advance ratio.",
       "cover": "assets/propeller_performance_images/fig-01.png",
+      "aside": {
+          "src": "assets/propeller_performance_images/fig-03.png",
+          "caption": "Efficiency vs advance ratio"
+        }
       "gallery": [
         {
           "src": "assets/propeller_performance_images/fig-01.png",
@@ -143,10 +147,6 @@ window.PORTFOLIO = {
         {
           "src": "assets/propeller_performance_images/fig-02.png",
           "caption": "Torque coefficient vs advance ratio"
-        },
-        {
-          "src": "assets/propeller_performance_images/fig-03.png",
-          "caption": "Efficiency vs advance ratio"
         }
       ]
     },
