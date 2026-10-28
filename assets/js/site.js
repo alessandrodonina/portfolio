@@ -87,7 +87,7 @@ else {
             ${p.summary ? `<p class="eyebrow summary-label">Summary</p>${p.summary.map(s => `<p>${esc(s)}</p>`).join('')}` : ''}
             ${p.detail ? `<p>${esc(p.detail)}</p>` : ''}
             ${p.tags ? `<div class="tags">${tags(p)}</div>` : ''}
-            ${dl(p, 'button')}
+            ${dl(p, 'btn-link')}
           </div>
           ${asideContent}
         </div>
