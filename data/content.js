@@ -59,7 +59,9 @@ window.PORTFOLIO = {
       "description": "Custom Bayesian optimizer for designing ducted propellers, validated through CFD. It generated up to 700 N of thrust with a 0.72 meter diameter duct.",
       "summary": [
         "The ducted propeller was part of RED Ferraris, an eVTOL designed by the ZEFIRO Student Team for the 2025 VFS Competition. For this project, the team won the “Best New Entrant” Prize.",
-        "The duct helped the propeller generate an additional thrust of 700 N with a diameter of 0.72 meters: 16 motors, distributed along the front and rear wings, created a DEP (Distributed Electric Propulsion) system able to lift a 2.2-ton hydrogen eVTOL."
+        "The duct helped the propeller generate an additional thrust of 700 N with a diameter of 0.72 meters: 16 motors, distributed along the front and rear wings, created a DEP (Distributed Electric Propulsion) system able to lift a 2.2-ton hydrogen eVTOL.",
+        "The process starts with low-fidelity duct optimization combining Class Shape Transformation (CST), DFDC, and Bayesian Optimization to maximize the thrust-to-power ratio. The rotor blade geometry is then designed using a Blade Element Momentum Theory (BEMT) algorithm driven by 2D CFD inflow velocity distributions to minimize power consumption for the required thrust.",
+        "For aerodynamic and kinematic wing-duct integration, a NACA 4412 airfoil was selected alongside a custom positioning script to manage transition tilt angles. Finally, the flight transition phase from 80° to 20° tilt is evaluated via quasi-steady 2D RANS (k-ω SST) CFD simulations, delivering an aerodynamically efficient configuration with significantly lower computational cost than traditional 3D generative optimization."
       ],
       "tags": [
         "Aerodynamic Optimization",
