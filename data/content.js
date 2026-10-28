@@ -73,13 +73,13 @@ window.PORTFOLIO = {
       "cover": "assets/ducted_propeller_images/fig-02.png",
       "aside": {
         "src": "assets/ducted_propeller_images/fig-02.png",
-        "caption": "CFD validation of the design."
+        "caption": "CFD validation of the design.",
+        "src": "assets/ducted_propeller_images/fig-01.jpeg",
+        "caption": "Duct profile"
+        
       },
       "gallery": [
-        {
-          "src": "assets/ducted_propeller_images/fig-01.jpeg",
-          "caption": "Duct profile"
-        },
+        
         {
           "src": "assets/ducted_propeller_images/fig-03.png",
           "caption": "Thrust"
