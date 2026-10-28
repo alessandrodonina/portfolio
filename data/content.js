@@ -71,19 +71,17 @@ window.PORTFOLIO = {
         "Python"
       ],
       "cover": "assets/ducted_propeller_images/fig-02.png",
-      "aside":[ 
-      {
-        "src": "assets/ducted_propeller_images/fig-02.png",
-        "caption": "CFD validation of the design."
-      },
-      {
-        "src": "assets/ducted_propeller_images/fig-01.jpeg",
-        "caption": "Duct profile"
-        
-          },
-      ]
+      "aside": [
+        {
+          "src": "assets/ducted_propeller_images/fig-02.png",
+          "caption": "CFD validation of the design."
+        },
+        {
+          "src": "assets/ducted_propeller_images/fig-01.jpeg",
+          "caption": "Duct profile"
+        }
+      ],
       "gallery": [
-        
         {
           "src": "assets/ducted_propeller_images/fig-03.png",
           "caption": "Thrust"
@@ -91,7 +89,7 @@ window.PORTFOLIO = {
         {
           "src": "assets/ducted_propeller_images/fig-04.png",
           "caption": "Velocity"
-        },
+        }
       ]
     },
     {
@@ -117,7 +115,7 @@ window.PORTFOLIO = {
         {
           "src": "assets/euler_fortran_images/fig-02.png",
           "caption": "Comparison with RANS and experimental data"
-        },
+        }
       ]
     },
     {
