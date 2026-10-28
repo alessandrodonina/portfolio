@@ -165,6 +165,12 @@ window.PORTFOLIO = {
         "MATLAB"
       ],
       "cover": "assets/propeller_tonal_noise_images/fig-01.jpeg",
+      "aside": [
+        {
+          "src": "assets/propeller_tonal_noise_images/fig-03.jpeg",
+          "caption": "Acoustic directivity and SPL radiation patterns at 1 m"
+        }
+      ]
       "gallery": [
         {
           "src": "assets/propeller_tonal_noise_images/fig-01.jpeg",
@@ -191,10 +197,16 @@ window.PORTFOLIO = {
         "MATLAB"
       ],
       "cover": "assets/trailing_edge_noise_images/fig-01.png",
-      "gallery": [
+      "aside": [
         {
           "src": "assets/trailing_edge_noise_images/fig-01.png",
           "caption": "Test case on a NACA 0018 comparing experimental data with numerical results across different wall-pressure models"
+        }
+      ]
+      "gallery": [
+        {
+         "src": "assets/trailing_edge_noise_images/fig-02.png",
+          "caption": "Aeroacoustic ATF directivity polar plots and validation"
         }
       ]
     }
