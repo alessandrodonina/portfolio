@@ -13,6 +13,7 @@
   --accent: #79d4f2;
   --coral: #ec7868;
   --teal: #4d9fc6;
+  --corner-radius: 8px;
 }
 
 html {
@@ -121,6 +122,7 @@ nav {
   display: flex;
   align-items: center;
   overflow: hidden;
+  border-radius: var(--corner-radius);
   margin: 0 -60px;
   padding: 72px 9% 92px;
   background: var(--night);
@@ -282,7 +284,7 @@ h1 span {
 
 .profile-pic {
   width: 100%;
-  border-radius: 3px;
+  border-radius: var(--corner-radius);
   box-shadow: 12px 12px 0 var(--teal);
   display: block;
   transition: transform 0.3s ease;
@@ -331,7 +333,7 @@ h2 {
 .card {
   min-width: 0;
   border: 1px solid var(--line);
-  border-radius: 8px;
+  border-radius: var(--corner-radius);
   padding: 14px;
   background: #fff;
   transition: transform 0.4s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.4s ease, border-color 0.3s ease;
@@ -377,7 +379,7 @@ h2 {
   background: #fff;
   border: 1px solid #d4e0ea;
   padding: 25px;
-  border-radius: 2px;
+  border-radius: var(--corner-radius);
   overflow: hidden;
 }
 
@@ -387,6 +389,7 @@ h2 {
   min-width: 0;
   object-fit: contain;
   mix-blend-mode: multiply;
+  border-radius: var(--corner-radius);
   transition: transform 0.3s ease;
 }
 
@@ -671,6 +674,7 @@ figure {
   border: 1px solid var(--line);
   background: var(--surface);
   overflow: hidden;
+  border-radius: var(--corner-radius);
 }
 
 figure img {
@@ -678,6 +682,7 @@ figure img {
   max-height: 380px;
   object-fit: contain;
   display: block;
+  border-radius: var(--corner-radius);
   transition: transform 0.3s ease;
 }
 
