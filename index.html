@@ -3,56 +3,73 @@
 <head>
   <!-- Open Graph / Anteprima Social -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://alessandrodonina.github.io/portfolio/index.html">
+  <meta property="og:url" content="https://alessandrodonina.github.io/portfolio/">
   <meta property="og:title" content="Alessandro Donina | Portfolio">
   <meta property="og:description" content="Aerospace engineering portfolio, aerodynamics and aeroacoustics.">
   <meta property="og:image" content="https://alessandrodonina.github.io/portfolio/assets/preview.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Alessandro Donina — aerospace engineering, fluid dynamics and aeroacoustics">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Alessandro Donina | Portfolio">
+  <meta name="twitter:description" content="Aerospace engineering portfolio, aerodynamics and aeroacoustics.">
+  <meta name="twitter:image" content="https://alessandrodonina.github.io/portfolio/assets/preview.png">
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Alessandro Donina — Aerospace engineering portfolio, aerodynamics and aeroacoustics.">
   <title>Alessandro Donina | Portfolio</title>
-  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="canonical" href="https://alessandrodonina.github.io/portfolio/">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=2">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body data-page="home">
   <div class="wrap">
     <nav>
-      <a class="brand" href="index.html">Alessandro Donina<span>.</span></a>
-      <div class="links">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="projects.html">Projects</a>
-        <a href="index.html#contact">Contact</a>
-      </div>
+      <a class="brand" href="#home">Alessandro Donina<span>.</span></a>
+      <a class="nav-contact" href="#contact">Contact me</a>
     </nav>
     <main>
-      <section class="hero">
-        <div class="eyebrow">Personal portfolio / October 2026</div>
-        <h1>Fluid dynamics.<br><span>Aeroacoustics.</span></h1>
-        <p class="lead" id="intro"></p>
-        <div class="actions">
-          <a class="button" href="projects.html">Explore projects</a>
-          <a class="button light" data-cv target="_blank" rel="noopener noreferrer">View CV</a>
+      <section class="hero reveal reveal--up" id="home">
+        <div class="hero-scene" aria-hidden="true">
+          <img class="hero-flow" src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Anim_ProfilSym%2C_smokes.gif" alt="" fetchpriority="high">
         </div>
+        <div class="hero-copy">
+          <div class="eyebrow">Personal Portfolio</div>
+          <h1>Fluid dynamics.<br><span>Aeroacoustics.</span></h1>
+          <p class="lead" id="intro"></p>
+          <div class="actions">
+            <a class="button" href="#projects">Explore projects</a>
+            <a class="button light" data-cv target="_blank" rel="noopener noreferrer">View CV</a>
+          </div>
+        </div>
+        <a class="hero-credit" href="https://commons.wikimedia.org/wiki/File:Anim_ProfilSym,_smokes.gif" target="_blank" rel="noopener noreferrer">NACA smoke-tunnel flow, c. 1938 · U.S. public domain</a>
       </section>
-      <section class="about" id="about">
-        <a href="about.html" style="display: contents;">
+      <section class="about reveal reveal--left" id="about">
+        <div class="profile-col">
           <img src="assets/profilo.jpg" alt="Alessandro Donina" class="profile-pic">
-        </a>
+          <a class="button" data-cv target="_blank" rel="noopener noreferrer">View CV</a>
+        </div>
         <div>
           <h2>About me</h2>
-          <p>I am a final-year Master’s student in Aerospace Engineering at Politecnico di Torino, specializing in aerodynamics.<br><br>During high school, which focused on science and aeronautics, I realized that I wanted to become an aerospace engineer.<br><br>My interest in fluid dynamics grew during the Thermal-Fluid Dynamics and Aerodynamics course in my Bachelor’s degree, leading me to pursue a Master’s specialization in aerodynamics.</p>
-          <a class="button" href="about.html">Read full bio</a>
+          <div id="about-text"></div>
         </div>
       </section>
-      <section>
-        <div class="section-head">
+      <section id="projects">
+        <div class="section-head reveal reveal--right">
           <h2>Projects</h2>
           <span id="project-count"></span>
         </div>
-        <div class="grid" id="projects"></div>
+        <p class="lead reveal reveal--left">Numerical methods, design workflows, experimental comparisons, and my bachelor’s thesis.</p>
+        <div class="grid project-grid" id="project-grid"></div>
+        <div class="project-panel" id="project-detail-panel" hidden>
+          <div class="project-panel-inner" id="project-detail-content"></div>
+        </div>
       </section>
-      <section class="downloads" id="contact">
+      <section class="downloads reveal reveal--right" id="contact">
         <div>
           <h2>Get in touch</h2>
           <p>Feel free to reach out for opportunities, collaborations, or just to say hi.</p>

@@ -24,82 +24,157 @@ const dl = (p, cls) => p.download ? `
 ` : '';
 
 document.querySelectorAll('[data-cv]').forEach(a => a.href = D.cv);
-document.querySelectorAll('[data-portfolio]').forEach(a => {
-  if (D.portfolio) a.href = D.portfolio;
-});
 document.querySelectorAll('[data-email]').forEach(a => {
   a.href = 'mailto:' + D.email;
   a.textContent = D.email; 
 });
 document.querySelectorAll('[data-linkedin]').forEach(a => a.href = D.linkedin);
 
+const renderProjectDetail = (p, i) => {
+  const asideContent = p.aside
+    ? `<div class="aside-col">${Array.isArray(p.aside) ? p.aside.map(im => fig(im, p)).join('') : fig(p.aside, p)}</div>`
+    : '';
 
-if (document.body.dataset.page === 'home') {
-  document.querySelector('#intro').textContent = D.intro;
-  document.querySelector('#project-count').textContent = String(D.projects.length).padStart(2, '0') + ' PROJECTS';
-  
-  document.querySelector('#projects').innerHTML = D.projects.map((p, i) => `
-    <article class="card" onclick="window.location.href='projects.html#project-${i + 1}'" style="cursor: pointer;">
-      <div class="cover">
-        <img src="${p.cover}" alt="${esc(p.title)} — figure" loading="lazy">
-      </div>
-      <div class="meta">
-        <span>${esc(p.category)}</span>
-        <span>${String(i + 1).padStart(2, '0')}</span>
-      </div>
-      <h3>${esc(p.title)}</h3>
-      <p>${esc(p.description)}</p>
-      <div class="tags">${tags(p)}</div>
-      ${p.download ? `
-        <div class="card-links">
+  return `
+    <section class="detail">
+      <button class="detail-close" type="button" data-close-project aria-label="Close project details" title="Close project details">
+        <span class="detail-close-icon" aria-hidden="true">&#215;</span>
+      </button>
+      <div class="detail-top${p.aside ? ' has-aside' : ''}">
+        <div>
+          <p class="eyebrow">${String(i + 1).padStart(2, '0')} / ${esc(p.category)}</p>
+          <h2>${esc(p.title)}</h2>
+          <p>${esc(p.description)}</p>
+          ${p.summary ? `<p class="eyebrow summary-label">Summary</p>${p.summary.map(s => `<p>${esc(s)}</p>`).join('')}` : ''}
+          ${p.detail ? `<p>${esc(p.detail)}</p>` : ''}
+          ${p.tags ? `<div class="tags">${tags(p)}</div>` : ''}
           ${dl(p, 'btn-link')}
         </div>
-      ` : ''}
-    </article>
-  `).join('');
-} 
-else if (document.body.dataset.page === 'about') {
-  document.querySelector('#about-text').innerHTML = D.about.map(p => `<p>${esc(p)}</p>`).join('');
-} 
-else {
-  document.querySelector('#index').innerHTML = D.projects.map((p, i) => `
-    <li>
-      <a href="#project-${i + 1}">
-        <span class="eyebrow">${String(i + 1).padStart(2, '0')}</span>
-        <span>${esc(p.title)}</span>
-        <small>${esc(p.category)}</small>
-      </a>
-    </li>
-  `).join('');
+        ${asideContent}
+      </div>
+      ${p.gallery_title ? `<h3 class="gallery-title">${esc(p.gallery_title)}</h3>` : ''}
+      ${p.gallery ? `<div class="gallery">${p.gallery.map(im => fig(im, p)).join('')}</div>` : ''}
+    </section>
+  `;
+};
 
-  document.querySelector('#details').innerHTML = D.projects.map((p, i) => {
-    const asideContent = p.aside 
-      ? `<div class="aside-col">${Array.isArray(p.aside) ? p.aside.map(im => fig(im, p)).join('') : fig(p.aside, p)}</div>` 
-      : '';
+const renderProjects = () => {
+  const projectGrid = document.querySelector('#project-grid');
+  if (projectGrid) {
+    projectGrid.innerHTML = D.projects.map((p, i) => `
+      <article class="card project-card reveal" id="project-${i + 1}" style="--reveal-delay: ${Math.min(i * 65, 325)}ms">
+        <button class="project-card-trigger" type="button" aria-expanded="false" aria-controls="project-detail-panel" data-project-toggle data-project-index="${i}">
+          <span class="cover">
+            <img src="${p.cover}" alt="" loading="lazy">
+          </span>
+          <span class="meta">
+            <span>${esc(p.category)}</span>
+            <span>${String(i + 1).padStart(2, '0')}</span>
+          </span>
+          <span class="project-card-title">${esc(p.title)}</span>
+          <span class="project-card-description">${esc(p.description)}</span>
+          <span class="tags">${tags(p)}</span>
+        </button>
+      </article>
+    `).join('');
 
-    return `
-      <section class="detail" id="project-${i + 1}">
-        <div class="detail-top${p.aside ? ' has-aside' : ''}">
-          <div>
-            <p class="eyebrow">${String(i + 1).padStart(2, '0')} / ${esc(p.category)}</p>
-            <h2>${esc(p.title)}</h2>
-            <p>${esc(p.description)}</p>
-            ${p.summary ? `<p class="eyebrow summary-label">Summary</p>${p.summary.map(s => `<p>${esc(s)}</p>`).join('')}` : ''}
-            ${p.detail ? `<p>${esc(p.detail)}</p>` : ''}
-            ${p.tags ? `<div class="tags">${tags(p)}</div>` : ''}
-            ${dl(p, 'btn-link')}
-          </div>
-          ${asideContent}
-        </div>
-        ${p.gallery_title ? `<h3 class="gallery-title">${esc(p.gallery_title)}</h3>` : ''}
-        ${p.gallery ? `<div class="gallery">${p.gallery.map(im => fig(im, p)).join('')}</div>` : ''}
-      </section>
-    `;
-  }).join('');
+    const projectPanel = document.querySelector('#project-detail-panel');
+    const detailContent = document.querySelector('#project-detail-content');
+    projectGrid.addEventListener('click', event => {
+      const toggle = event.target.closest('[data-project-toggle]');
+      if (!toggle) return;
 
-  if (location.hash) {
-    requestAnimationFrame(() => {
-      document.getElementById(location.hash.slice(1))?.scrollIntoView();
+      const opening = toggle.getAttribute('aria-expanded') !== 'true';
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const panelWasOpen = projectPanel.classList.contains('is-open');
+
+      projectGrid.querySelectorAll('[data-project-toggle]').forEach(other => {
+        other.setAttribute('aria-expanded', 'false');
+        other.closest('.project-card').classList.remove('is-selected');
+      });
+
+      if (!opening) {
+        projectPanel.classList.remove('is-open');
+        window.setTimeout(() => {
+          if (!projectGrid.querySelector('[aria-expanded="true"]')) projectPanel.hidden = true;
+        }, reduceMotion ? 0 : 650);
+        if (location.hash === `#${toggle.closest('.project-card').id}`) {
+          history.replaceState(null, '', location.pathname + location.search);
+        }
+        return;
+      }
+
+      const projectIndex = Number(toggle.dataset.projectIndex);
+      toggle.setAttribute('aria-expanded', 'true');
+      toggle.closest('.project-card').classList.add('is-selected');
+      detailContent.innerHTML = renderProjectDetail(D.projects[projectIndex], projectIndex);
+      projectPanel.hidden = false;
+
+      if (panelWasOpen) {
+        projectPanel.classList.add('is-switching');
+        requestAnimationFrame(() => projectPanel.classList.remove('is-switching'));
+      } else {
+        requestAnimationFrame(() => projectPanel.classList.add('is-open'));
+      }
+
+      history.replaceState(null, '', `#${toggle.closest('.project-card').id}`);
+      window.setTimeout(() => {
+        if (projectPanel.classList.contains('is-open')) {
+          projectPanel.scrollIntoView({ behavior: reduceMotion ? 'instant' : 'smooth', block: 'start' });
+        }
+      }, 160);
+    });
+
+    projectPanel.addEventListener('click', event => {
+      const closeButton = event.target.closest('[data-close-project]');
+      if (!closeButton) return;
+
+      const activeToggle = projectGrid.querySelector('[data-project-toggle][aria-expanded="true"]');
+      const activeCard = activeToggle?.closest('.project-card');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (activeToggle) {
+        activeToggle.setAttribute('aria-expanded', 'false');
+        activeCard.classList.remove('is-selected');
+        activeToggle.focus({ preventScroll: true });
+      }
+
+      projectPanel.classList.remove('is-open');
+      if (location.hash === `#${activeCard?.id}`) {
+        history.replaceState(null, '', location.pathname + location.search);
+      }
+
+      window.setTimeout(() => {
+        if (!projectGrid.querySelector('[aria-expanded="true"]')) projectPanel.hidden = true;
+      }, reduceMotion ? 0 : 650);
+
+      activeCard?.scrollIntoView({ behavior: reduceMotion ? 'instant' : 'smooth', block: 'center' });
     });
   }
+};
+
+document.querySelector('#intro').textContent = D.intro;
+document.querySelector('#project-count').textContent = String(D.projects.length).padStart(2, '0') + ' PROJECTS';
+document.querySelector('#about-text').innerHTML = D.about.map(p => `<p>${esc(p)}</p>`).join('');
+renderProjects();
+
+if (location.hash) {
+  requestAnimationFrame(() => {
+    const target = document.getElementById(location.hash.slice(1));
+    const toggle = target?.matches('.project-card') ? target.querySelector('[data-project-toggle]') : null;
+    if (toggle) toggle.click();
+    else target?.scrollIntoView();
+  });
+}
+
+const revealElements = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  const revealObserver = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      entry.target.classList.toggle('is-visible', entry.isIntersecting);
+    });
+  }, { threshold: 0.12 });
+  revealElements.forEach(element => revealObserver.observe(element));
+} else {
+  revealElements.forEach(element => element.classList.add('is-visible'));
 }

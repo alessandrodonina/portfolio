@@ -1,13 +1,10 @@
 window.PORTFOLIO = {
   "name": "Alessandro Donina",
-  "intro": "MSc Aerospace Engineering student at Politecnico di Torino, specializing in aerodynamics.",
+  "intro": "MSc Aerospace Engineering student at Politecnico di Torino,\nspecializing in aerodynamics",
   "about": [
     "I am a final-year Master’s student in Aerospace Engineering at Politecnico di Torino, specializing in aerodynamics.",
-    "During high school, which focused on science and aeronautics, I realized that I wanted to become an aerospace engineer. My interest in fluid dynamics grew during the Thermal-Fluid Dynamics and Aerodynamics course in my Bachelor’s degree, leading me to pursue a Master’s specialization in aerodynamics.",
-    "My studies cover gasdynamics, unsteady aerodynamics, aeroelasticity, turbulent flows, CFD, aeroacoustics, and experimental aerodynamics. My academic projects include the analysis of experimental data, low-fidelity aeroacoustic tools, CFD with ANSYS Fluent and STAR-CCM+, and a 2D Euler solver in Fortran.",
-    "At the ZEFIRO Student Team, focused on urban air mobility, I progressed into technical management, coordinating engineering tasks and deadlines. I worked on propeller design and selection, including a custom Python tool to optimize a ducted-propeller system.",
-    "I contributed to the final design optimizations of VESPA Mk1, an agricultural eVTOL, including winglet design and parachute fairing. For the Airspeeder electric racing eVTOL project, I helped draft administrative and participation agreements, and developed the initial workflow for aerodynamic and structural optimization of the Mk3c prototype.",
-    "I am currently looking for an industry-based thesis where I can apply my knowledge to real-world problems and learn from experienced professionals."
+    "An early interest in science and aeronautics led me to aerospace engineering. During my Bachelor’s degree, I became particularly interested in fluid dynamics and chose to specialize in aerodynamics for my Master’s studies.",
+    "At the ZEFIRO Student Team, I grew into technical management while contributing to propeller design and aerodynamic development for eVTOL projects including RED Ferraris, VESPA Mk1, and Airspeeder Mk3c."
   ],
   "cv": "assets/documents/Alessandro-Donina-CV.pdf",
   "email": "alessandrodonina@gmail.com",
