@@ -53,7 +53,7 @@ const renderProjectDetail = (p, i) => {
         ${asideContent}
       </div>
       ${p.gallery_title ? `<h3 class="gallery-title">${esc(p.gallery_title)}</h3>` : ''}
-      ${p.gallery ? `<div class="gallery">${p.gallery.map(im => fig(im, p)).join('')}</div>` : ''}
+      ${p.gallery ? `<div class="gallery" style="--gallery-columns: ${p.gallery.length}">${p.gallery.map(im => fig(im, p)).join('')}</div>` : ''}
     </section>
   `;
 };
