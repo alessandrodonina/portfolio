@@ -573,12 +573,31 @@ footer {
 }
 
 .detail-close-icon {
-  display: grid;
-  place-items: center;
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 23px;
-  line-height: 1;
+  position: relative;
+  display: block;
+  width: 14px;
+  height: 14px;
+  font-size: 0;
   transition: transform 0.3s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.detail-close-icon::before,
+.detail-close-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 1.5px;
+  background: currentColor;
+}
+
+.detail-close-icon::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.detail-close-icon::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 .detail-close:hover {

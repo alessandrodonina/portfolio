@@ -178,3 +178,34 @@ if ('IntersectionObserver' in window) {
 } else {
   revealElements.forEach(element => element.classList.add('is-visible'));
 }
+
+const anchorSections = [...document.querySelectorAll('main > section[id]')];
+let hashUpdateFrame = 0;
+
+const updateSectionHash = () => {
+  hashUpdateFrame = 0;
+  const hashTarget = document.getElementById(location.hash.slice(1));
+  if (document.querySelector('#project-detail-panel.is-open') || hashTarget?.matches('.project-card')) return;
+
+  const atPageStart = window.scrollY <= 1;
+  const atPageEnd = window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 1;
+  const marker = window.innerHeight * 0.4;
+  let activeSection = atPageEnd ? anchorSections[anchorSections.length - 1] : anchorSections[0];
+  if (!atPageStart && !atPageEnd) {
+    anchorSections.forEach(section => {
+      if (section.getBoundingClientRect().top <= marker) activeSection = section;
+    });
+  }
+
+  if (activeSection && location.hash !== `#${activeSection.id}`) {
+    history.replaceState(history.state, '', `${location.pathname}${location.search}#${activeSection.id}`);
+  }
+};
+
+const scheduleSectionHashUpdate = () => {
+  if (!hashUpdateFrame) hashUpdateFrame = requestAnimationFrame(updateSectionHash);
+};
+
+window.addEventListener('scroll', scheduleSectionHashUpdate, { passive: true });
+window.addEventListener('resize', scheduleSectionHashUpdate);
+scheduleSectionHashUpdate();
