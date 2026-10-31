@@ -456,23 +456,24 @@ h3 {
 
 /* Stile per il bottone secondario minimal */
 .btn-link {
-  display: inline-block;
-  padding: 8px 14px;
-  font-size: 11px;
-  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  padding: 14px 22px;
+  font-size: 14px;
+  font-weight: 600;
   letter-spacing: 0;
-  color: var(--night);
-  background: #e3edf6;
-  border: 1px solid #c4d7e8;
+  color: #fff;
+  background: var(--night);
+  border: 1px solid var(--night);
   border-radius: 4px;
   transition: all 0.25s ease;
-  margin-top: 24px;
+  margin: 14px 0 18px;
 }
 
 .btn-link:hover {
-  background: var(--night);
+  background: var(--coral);
   color: #ffffff;
-  border-color: var(--night);
+  border-color: var(--coral);
 }
 
 .downloads {
@@ -820,4 +821,10 @@ figcaption {
   display: flex;
   flex-direction: column;
   gap: 20px;
+}
+
+.detail-top.has-aside > div > .btn-link {
+  display: flex;
+  width: fit-content;
+  margin: 24px auto 0;
 }
