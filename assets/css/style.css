@@ -826,5 +826,5 @@ figcaption {
 .detail-top.has-aside > div > .btn-link {
   display: flex;
   width: fit-content;
-  margin: 24px auto 0;
+  margin: 24px 0 0;
 }
