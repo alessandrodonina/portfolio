@@ -820,11 +820,35 @@ figcaption {
 .aside-col {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
+}
+
+.aside-col .aside-download {
+  display: flex;
+  width: 230px;
+  height: 48px;
+  justify-content: center;
+  margin: 0;
+}
+
+.aside-col > .btn-link {
+  align-self: center;
+  width: 230px;
+  height: 48px;
+  justify-content: center;
+  margin: 0;
 }
 
 .detail-top.has-aside > div > .btn-link {
   display: flex;
   width: fit-content;
   margin: 24px 0 0;
+}
+
+.detail-top.has-aside > div.aside-col > .btn-link {
+  width: 230px;
+  height: 48px;
+  justify-content: center;
+  margin: 0;
 }

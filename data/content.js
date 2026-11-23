@@ -28,7 +28,8 @@ window.PORTFOLIO = {
       ],
       "download": {
         "label": "View thesis",
-        "href": "assets/documents/Alessandro-Donina-Bachelors-Thesis.pdf"
+        "href": "assets/documents/Alessandro-Donina-Bachelors-Thesis.pdf",
+        "location": "aside"
       },
       "aside": {
         "src": "assets/tesi_images/nusselt.jpg",
@@ -67,6 +68,11 @@ window.PORTFOLIO = {
         "ANSYS",
         "Python"
       ],
+      "download": {
+        "label": "Read about the workflow",
+        "href": "assets/documents/A Multi-Fidelity Framework for the Design of Ducted Propellers and Wing-Duct Integration for Over-the-Wing eVTOL Aircraft.pdf",
+        "location": "aside"
+      },
       "cover": "assets/ducted_propeller_images/fig-02.png",
       "aside": [
         {

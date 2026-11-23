@@ -31,8 +31,12 @@ document.querySelectorAll('[data-email]').forEach(a => {
 document.querySelectorAll('[data-linkedin]').forEach(a => a.href = D.linkedin);
 
 const renderProjectDetail = (p, i) => {
-  const asideContent = p.aside
-    ? `<div class="aside-col">${Array.isArray(p.aside) ? p.aside.map(im => fig(im, p)).join('') : fig(p.aside, p)}</div>`
+  const asideFigures = p.aside
+    ? Array.isArray(p.aside) ? p.aside.map(im => fig(im, p)).join('') : fig(p.aside, p)
+    : '';
+  const asideDownload = p.download?.location === 'aside' ? dl(p, 'btn-link aside-download') : '';
+  const asideContent = asideFigures || asideDownload
+    ? `<div class="aside-col">${asideFigures}${asideDownload}</div>`
     : '';
 
   return `
@@ -48,7 +52,7 @@ const renderProjectDetail = (p, i) => {
           ${p.summary ? `<p class="eyebrow summary-label">Summary</p>${p.summary.map(s => `<p>${esc(s)}</p>`).join('')}` : ''}
           ${p.detail ? `<p>${esc(p.detail)}</p>` : ''}
           ${p.tags ? `<div class="tags">${tags(p)}</div>` : ''}
-          ${dl(p, 'btn-link')}
+          ${p.download && p.download.location !== 'aside' ? dl(p, 'btn-link') : ''}
         </div>
         ${asideContent}
       </div>
