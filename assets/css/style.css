@@ -697,8 +697,13 @@ figure img {
 
 figure:hover {
   animation: none !important;
-  transform: translateY(-5px) scale(1.045);
-  box-shadow: 0 10px 20px rgba(236, 120, 104, 0.22);
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px rgba(236, 120, 104, 0.18);
+}
+
+.aside-col:has(figure:hover) figure:not(:hover),
+.gallery:has(figure:hover) figure:not(:hover) {
+  transform: scale(0.98);
 }
 
 figcaption {
