@@ -24,12 +24,12 @@ window.PORTFOLIO = {
       "tags": [
         "Thermal-Fluid Dynamics",
         "Finite Elements",
-        "MATLAB"
+        "MATLAB",
+        "Thesis"
       ],
       "download": {
         "label": "View thesis",
-        "href": "assets/documents/Alessandro-Donina-Bachelors-Thesis.pdf",
-        "location": "aside"
+        "href": "assets/documents/Alessandro-Donina-Bachelors-Thesis.pdf"
       },
       "aside": {
         "src": "assets/tesi_images/nusselt.jpg",
@@ -70,8 +70,7 @@ window.PORTFOLIO = {
       ],
       "download": {
         "label": "Read about the workflow",
-        "href": "assets/documents/A Multi-Fidelity Framework for the Design of Ducted Propellers and Wing-Duct Integration for Over-the-Wing eVTOL Aircraft.pdf",
-        "location": "aside"
+        "href": "assets/documents/A Multi-Fidelity Framework for the Design of Ducted Propellers and Wing-Duct Integration for Over-the-Wing eVTOL Aircraft.pdf"
       },
       "cover": "assets/ducted_propeller_images/fig-02.png",
       "aside": [
