@@ -38,9 +38,11 @@ const renderProjectDetail = (p, i) => {
   const asideContent = asideFigures || asideDownload
     ? `<div class="aside-col">${asideFigures}${asideDownload}</div>`
     : '';
+  const galleryFigures = p.gallery ? p.gallery.map(im => fig(im, p)).join('') : '';
+  const figureCount = p.gallery?.length || 1;
 
   return `
-    <section class="detail">
+    <section class="detail" style="--detail-figure-count: ${figureCount}">
       <button class="detail-close" type="button" data-close-project aria-label="Close project details" title="Close project details">
         <span class="detail-close-icon" aria-hidden="true">&#215;</span>
       </button>
@@ -57,7 +59,7 @@ const renderProjectDetail = (p, i) => {
         ${asideContent}
       </div>
       ${p.gallery_title ? `<h3 class="gallery-title">${esc(p.gallery_title)}</h3>` : ''}
-      ${p.gallery ? `<div class="gallery" style="--gallery-columns: ${p.gallery.length}">${p.gallery.map(im => fig(im, p)).join('')}</div>` : ''}
+      ${galleryFigures}
     </section>
   `;
 };
@@ -84,6 +86,85 @@ const renderProjects = () => {
 
     const projectPanel = document.querySelector('#project-detail-panel');
     const detailContent = document.querySelector('#project-detail-content');
+    const projectSearch = document.querySelector('#project-search');
+    const projectSearchPanel = document.querySelector('#project-search-panel');
+    const projectSearchToggle = document.querySelector('#project-search-toggle');
+    const projectHeading = document.querySelector('#project-heading');
+    const projectSectionHead = document.querySelector('#projects .section-head');
+    const projectSearchEmpty = document.querySelector('#project-search-empty');
+    const projectCount = document.querySelector('#project-count');
+    const projectSearchContent = D.projects.map(p => {
+      const aside = Array.isArray(p.aside) ? p.aside : [p.aside];
+      return [
+        p.title,
+        p.category,
+        p.description,
+        ...(p.tags || []),
+        ...(p.keywords || []),
+        ...(p.summary || []),
+        p.detail,
+        p.gallery_title,
+        p.download?.label,
+        ...aside.map(image => image?.caption),
+        ...(p.gallery || []).map(image => image.caption)
+      ].filter(Boolean).join(' ').toLowerCase();
+    });
+
+    projectSearchToggle.addEventListener('click', () => {
+      const opening = !projectHeading.classList.contains('is-search-open');
+      projectHeading.classList.toggle('is-search-open', opening);
+      projectSectionHead.classList.toggle('is-search-open', opening);
+      projectSearchPanel.inert = !opening;
+      projectSearchPanel.setAttribute('aria-hidden', String(!opening));
+      projectSearchToggle.setAttribute('aria-expanded', String(opening));
+      projectSearchToggle.setAttribute('aria-label', opening ? 'Close project search' : 'Open project search');
+
+      if (opening) {
+        projectSearch.focus();
+      } else {
+        projectSearch.value = '';
+        projectSearch.dispatchEvent(new Event('input', { bubbles: true }));
+      }
+    });
+
+    projectSearch.addEventListener('keydown', event => {
+      if (event.key === 'Escape') {
+        projectSearchToggle.click();
+        projectSearchToggle.focus();
+      }
+    });
+
+    projectSearch.addEventListener('input', () => {
+      const query = projectSearch.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+      let visibleCount = 0;
+
+      projectGrid.querySelectorAll('.project-card').forEach(card => {
+        const projectIndex = Number(card.querySelector('[data-project-toggle]').dataset.projectIndex);
+        const matches = query.every(term => projectSearchContent[projectIndex].includes(term));
+        card.hidden = !matches;
+        if (matches) visibleCount += 1;
+      });
+
+      projectCount.textContent = query.length
+        ? `${String(visibleCount).padStart(2, '0')} / ${String(D.projects.length).padStart(2, '0')} PROJECTS`
+        : `${String(D.projects.length).padStart(2, '0')} PROJECTS`;
+      projectSearchEmpty.hidden = !query.length || visibleCount > 0;
+      projectGrid.classList.toggle('is-filter-empty', visibleCount === 0);
+
+      const selectedToggle = projectGrid.querySelector('[data-project-toggle][aria-expanded="true"]');
+      const selectedCard = selectedToggle?.closest('.project-card');
+      if (selectedCard?.hidden) {
+        selectedToggle.setAttribute('aria-expanded', 'false');
+        selectedCard.classList.remove('is-selected');
+        projectPanel.classList.remove('is-open', 'is-switching');
+        projectPanel.hidden = true;
+        detailContent.replaceChildren();
+        if (location.hash === `#${selectedCard.id}`) {
+          history.replaceState(null, '', location.pathname + location.search);
+        }
+      }
+    });
+
     projectGrid.addEventListener('click', event => {
       const toggle = event.target.closest('[data-project-toggle]');
       if (!toggle) return;

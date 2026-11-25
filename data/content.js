@@ -162,6 +162,7 @@ window.PORTFOLIO = {
         "The acoustic field was calculated applying Farassat's formulations and the Ffowcs Williams-Hawkings equation. These numerical results were subsequently validated against high-fidelity simulations from a robust CFD solver."
       ],
       "tags": [
+        "Aeroacoustics",
         "Propeller Noise",
         "BEMT",
         "MATLAB"
@@ -194,6 +195,7 @@ window.PORTFOLIO = {
         "The sound footprint was effectively calculated using boundary layer parameters at just two points. This method provides quick and reliable acoustic estimates, bypassing the need for heavy CFD simulations."
       ],
       "tags": [
+        "Aeroacoustics",
         "Trailing Edge Noise",
         "xfoil",
         "MATLAB"

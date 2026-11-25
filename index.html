@@ -24,7 +24,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=10">
+  <link rel="stylesheet" href="assets/css/style.css?v=13">
 </head>
 <body data-page="home">
   <div class="wrap">
@@ -50,7 +50,9 @@
       </section>
       <section class="about reveal reveal--left" id="about">
         <div class="profile-col">
-          <img src="assets/profilo.jpg" alt="Alessandro Donina" class="profile-pic">
+          <div class="profile-frame">
+            <img src="assets/profilo.jpg" alt="Alessandro Donina" class="profile-pic">
+          </div>
           <a class="button" data-cv target="_blank" rel="noopener noreferrer">View CV</a>
         </div>
         <div>
@@ -60,10 +62,24 @@
       </section>
       <section id="projects">
         <div class="section-head reveal reveal--right">
-          <h2>Projects</h2>
-          <span id="project-count"></span>
+          <div class="project-heading" id="project-heading">
+            <h2>Projects</h2>
+            <div class="project-search-control" id="project-search-control">
+              <button class="project-search-toggle" id="project-search-toggle" type="button" aria-label="Open project search" aria-expanded="false" aria-controls="project-search-panel">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <circle cx="10.8" cy="10.8" r="6.5"></circle>
+                  <path d="m16 16 4 4"></path>
+                </svg>
+              </button>
+              <div class="project-search" id="project-search-panel" aria-hidden="true" inert>
+                <input id="project-search" type="search" aria-label="Search projects by title, tag or keyword" placeholder="Search projects..." autocomplete="off">
+              </div>
+            </div>
+          </div>
+          <span id="project-count" role="status" aria-live="polite"></span>
         </div>
         <p class="lead reveal reveal--left">Numerical methods, design workflows, experimental comparisons, and my bachelor’s thesis.</p>
+        <p class="project-search-empty" id="project-search-empty" hidden>No projects match your search. Try another word.</p>
         <div class="grid project-grid" id="project-grid"></div>
         <div class="project-panel" id="project-detail-panel" hidden>
           <div class="project-panel-inner" id="project-detail-content"></div>
@@ -86,7 +102,7 @@
       <span>© 2026 Alessandro Donina. All rights reserved.</span>
     </footer>
   </div>
-  <script src="data/content.js?v=4"></script>
-  <script src="assets/js/site.js?v=4"></script>
+  <script src="data/content.js?v=5"></script>
+  <script src="assets/js/site.js?v=6"></script>
 </body>
 </html>
