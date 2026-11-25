@@ -109,6 +109,8 @@ const renderProjects = () => {
         ...(p.gallery || []).map(image => image.caption)
       ].filter(Boolean).join(' ').toLowerCase();
     });
+    const projectCards = [...projectGrid.querySelectorAll('.project-card')];
+    const projectLayoutAnimations = new WeakMap();
 
     projectSearchToggle.addEventListener('click', () => {
       const opening = !projectHeading.classList.contains('is-search-open');
@@ -136,9 +138,19 @@ const renderProjects = () => {
 
     projectSearch.addEventListener('input', () => {
       const query = projectSearch.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+      const previousPositions = new Map(
+        projectCards.filter(card => !card.hidden).map(card => [card, card.getBoundingClientRect()])
+      );
+      projectCards.forEach(card => {
+        const animation = projectLayoutAnimations.get(card);
+        if (animation) {
+          animation.cancel();
+          projectLayoutAnimations.delete(card);
+        }
+      });
       let visibleCount = 0;
 
-      projectGrid.querySelectorAll('.project-card').forEach(card => {
+      projectCards.forEach(card => {
         const projectIndex = Number(card.querySelector('[data-project-toggle]').dataset.projectIndex);
         const matches = query.every(term => projectSearchContent[projectIndex].includes(term));
         card.hidden = !matches;
@@ -150,6 +162,33 @@ const renderProjects = () => {
         : `${String(D.projects.length).padStart(2, '0')} PROJECTS`;
       projectSearchEmpty.hidden = !query.length || visibleCount > 0;
       projectGrid.classList.toggle('is-filter-empty', visibleCount === 0);
+
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        projectCards.forEach(card => {
+          const previousPosition = previousPositions.get(card);
+          if (!previousPosition || card.hidden) return;
+
+          const currentPosition = card.getBoundingClientRect();
+          const deltaX = previousPosition.left - currentPosition.left;
+          const deltaY = previousPosition.top - currentPosition.top;
+          if (Math.abs(deltaX) < 1 && Math.abs(deltaY) < 1) return;
+
+          const animation = card.animate([
+            { transform: `translate(${deltaX}px, ${deltaY}px)` },
+            { transform: 'translate(0, 0)' }
+          ], {
+            duration: 420,
+            easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+            composite: 'add'
+          });
+          projectLayoutAnimations.set(card, animation);
+          animation.onfinish = () => {
+            if (projectLayoutAnimations.get(card) === animation) {
+              projectLayoutAnimations.delete(card);
+            }
+          };
+        });
+      }
 
       const selectedToggle = projectGrid.querySelector('[data-project-toggle][aria-expanded="true"]');
       const selectedCard = selectedToggle?.closest('.project-card');
